@@ -1,16 +1,6 @@
 <!DOCTYPE html>
-<html lang="zh-Hant-TW">
+<html lang="ja">
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WKZ4GFL55N"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-WKZ4GFL55N');
-
-  </script>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
@@ -28,23 +18,23 @@
   <meta name="theme-color" content="#000000">
 
   <!-- Primary Meta Tags -->
-  <title>統神端火鍋</title>
+  <title>コトブキ鍋</title>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <meta name="title" content="統神端火鍋">
-  <meta name="description" content="統神端火鍋小遊戲，你能讓統神走多遠不跌倒?">
+  <meta name="title" content="コトブキ鍋">
+  <meta name="description" content="団結の神様は、どこまで転ばずにいられるのか。">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rogeraabbccdd.github.io/AsiaGodTone-Hotpot-Game">
-  <meta property="og:title" content="統神端火鍋">
-  <meta property="og:description" content="統神端火鍋小遊戲，你能讓統神走多遠不跌倒?">
+  <meta property="og:title" content="コトブキ鍋">
+  <meta property="og:description" content="団結の神様は、どこまで転ばずにいられるのか。">
   <meta property="og:image" content="https://rogeraabbccdd.github.io/AsiaGodTone-Hotpot-Game/assets/preview.jpg">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://rogeraabbccdd.github.io/AsiaGodTone-Hotpot-Game">
-  <meta property="twitter:title" content="統神端火鍋">
-  <meta property="twitter:description" content="統神端火鍋小遊戲，你能讓統神走多遠不跌倒?">
+  <meta property="twitter:title" content="コトブキ鍋">
+  <meta property="twitter:description" content="団結の神様は、どこまで転ばずにいられるのか。">
   <meta property="twitter:image" content="https://rogeraabbccdd.github.io/AsiaGodTone-Hotpot-Game/assets/preview.jpg">
 </head>
 <body>
@@ -66,120 +56,122 @@
       <div class="mx-auto" id="title" v-if="game === 0">
         <div class="row align-contents-center content mx-auto align-content-center">
           <div class="col-12 text-white text-center">
-            <h1 class="display-1">統神端火鍋</h1>
+            <h1 class="display-1">コトブキ鍋</h1>
             <h3>
-              讓統神維持平衡
+				統一神々のバランスを保つ
               <br>
               <span class="text-danger">
-                <span v-if="difficulty === 0">左右傾斜超過 50 度就會跌倒</span>
-                <span v-else-if="difficulty === 1">左右傾斜超過 60 度就會跌倒</span>
-                <span v-else-if="difficulty === 2">轉 3 圈就會跌倒</span>
+                <span v-if="difficulty === 0">左右に50度以上傾けると倒れる</span>
+                <span v-else-if="difficulty === 1">左右に60度以上傾けると倒れる</span>
+                <span v-else-if="difficulty === 2">3回転で落下</span>
               </span>
             </h3>
             <div class="row justify-content-between">
               <div class="col-4">
-                <button type="button" class="btn btn-primary w-100" value="橫桿" @click="control = 0" :class="{'border border-3': control === 0}">
+                <button type="button" class="btn btn-primary w-100" value="クロスバー" @click="control = 0" :class="{'border border-3': control === 0}">
                   <span class="material-icons">linear_scale</span>
                   <br>
-                  橫桿
+                  クロスバー
                 </button>
               </div>
               <div class="col-4">
-                <button type="button" class="btn btn-primary w-100" value="螢幕" @click="control = 1" :class="{'border border-3': control === 1}">
+                <button type="button" class="btn btn-primary w-100" value="スクリーン" @click="control = 1" :class="{'border border-3': control === 1}">
                   <span class="material-icons">mouse</span>
                   <br>
-                  點按螢幕
+                  スクリーン
                 </button>
                 </div>
               <div class="col-4">
-                <button type="button" id="gyroscope" class="btn btn-primary w-100" value="陀螺儀" @click="control = 2" :class="{'border border-3': control === 2}">
+                <button type="button" id="gyroscope" class="btn btn-primary w-100" value="ジャイロスコープ" @click="control = 2" :class="{'border border-3': control === 2}">
                   <span class="material-icons">screen_rotation</span>
                   <br>
-                  陀螺儀
+                  ジャイロスコープ
                 </button>
               </div>
               <div class="col-12 mt-3">
                 <p v-if="control === 0">
-                  調整螢幕下方的橫桿
+					画面下部のバーを調整する
                 </p>
                 <p v-if="control === 1">
-                  點擊螢幕或滑動滑鼠、手指
+					画面をクリックするか、マウスや指をスライドさせる
                 </p>
                 <p v-if="control === 2">
-                  左右傾斜裝置
+					左右チルト装置
                 </p>
               </div>
               <div class="col-12">
-                <input type="button" value="超級簡單" class="btn btn-success" @click="difficulty = 2" :class="{'border border-3': difficulty === 2, 'mx-2': true}">
-                <input type="button" value="簡單" class="btn btn-primary" @click="difficulty = 1" :class="{'border border-3': difficulty === 1, 'mx-2': true}">
-                <input type="button" value="困難" class="btn btn-danger" @click="difficulty = 0" :class="{'border border-3': difficulty === 0, 'mx-2': true}">
+                <input type="button" value="超シンプル" class="btn btn-success" @click="difficulty = 2" :class="{'border border-3': difficulty === 2, 'mx-2': true}">
+                <input type="button" value="シンプル" class="btn btn-primary" @click="difficulty = 1" :class="{'border border-3': difficulty === 1, 'mx-2': true}">
+                <input type="button" value="難易度" class="btn btn-danger" @click="difficulty = 0" :class="{'border border-3': difficulty === 0, 'mx-2': true}">
               </div>
             </div>
             <br>
-            <input type="button" value="開始遊戲" class="btn btn-success" @click="restart(false)">
+            <input type="button" value="ゲームを開始する" class="btn btn-success" @click="restart(false)">
           </div>
         </div>
       </div>
       <div class="mx-auto" id="gameover" v-if="game === 2">
         <div class="row align-contents-center content mx-auto align-content-center">
           <div class="col-12 text-white text-center">
-            <h1 class="display-1">遊戲結束</h1>
-            <h1>距離: {{ scoreText }} 公尺</h1>
+            <h1 class="display-1">ゲームオーバー</h1>
+            <h1>距離: {{ scoreText }} m</h1>
             <div class="row justify-content-between">
               <div class="col-4">
-                <button type="button" class="btn btn-primary w-100" value="橫桿" @click="control = 0" :class="{'border border-3': control === 0}">
+                <button type="button" class="btn btn-primary w-100" value="クロスバー" @click="control = 0" :class="{'border border-3': control === 0}">
                   <span class="material-icons">linear_scale</span>
                   <br>
-                  橫桿
+                  クロスバー
                 </button>
               </div>
               <div class="col-4">
-                <button type="button" class="btn btn-primary w-100" value="螢幕" @click="control = 1" :class="{'border border-3': control === 1}">
+                <button type="button" class="btn btn-primary w-100" value="スクリーン" @click="control = 1" :class="{'border border-3': control === 1}">
                   <span class="material-icons">mouse</span>
                   <br>
-                  點按螢幕
+                  画面をタップする
                 </button>
               </div>
               <div class="col-4">
-                <button type="button" id="gyroscope1" class="btn btn-primary w-100" value="陀螺儀" @click="control = 2" :class="{'border border-3': control === 2}">
+                <button type="button" id="gyroscope1" class="btn btn-primary w-100" value="ジャイロスコープ" @click="control = 2" :class="{'border border-3': control === 2}">
                   <span class="material-icons">screen_rotation</span>
                   <br>
-                  陀螺儀
+                  ジャイロスコープ
                 </button>
               </div>
               <div class="col-12 mt-3">
                 <p v-if="control === 0">
-                  調整螢幕下方的橫桿
+					画面下部のバーを調整する
                 </p>
                 <p v-if="control === 1">
-                  點擊螢幕或滑動滑鼠、手指
+					画面をクリックするか、マウスや指をスライドさせる
                 </p>
                 <p v-if="control === 2">
-                  左右傾斜裝置
+					左右チルト装置
                 </p>
               </div>
               <div class="col-12">
-                <input type="button" value="超級簡單" class="btn btn-success" @click="difficulty = 2" :class="{'border border-3': difficulty === 2, 'mx-2': true}">
-                <input type="button" value="簡單" class="btn btn-primary" @click="difficulty = 1" :class="{'border border-3': difficulty === 1, 'mx-2': true}">
+                <input type="button" value="超シンプル" class="btn btn-success" @click="difficulty = 2" :class="{'border border-3': difficulty === 2, 'mx-2': true}">
+                <input type="button" value="シンプル" class="btn btn-primary" @click="difficulty = 1" :class="{'border border-3': difficulty === 1, 'mx-2': true}">
                 <input type="button" value="困難" class="btn btn-danger" @click="difficulty = 0" :class="{'border border-3': difficulty === 0, 'mx-2': true}">
               </div>
             </div>
             <br>
-            <input type="button" value="再玩一次" class="btn btn-success" @click="restart(true)">
+            <input type="button" value="もう一度再生する" class="btn btn-success" @click="restart(true)">
             <br>
             <br>
             <p>
               &copy; {{ dateYear }}
               Made with ❤ by 
               <a target="_blank" href="https://github.com/rogeraabbccdd" class="text-white">Kento</a>
+			  Forked By
+			  <a target="_blank" href="https://github.com/nennneko5787" class="text-white">nennneko5787</a>
               <p class="text-bold">
-                本遊戲僅有網頁版
+                このゲームはウェブ版のみです
                 <br>
                 <a href="https://raw.githubusercontent.com/rogeraabbccdd/AsiaGodTone-Hotpot-Game/master/gnn.png">
-                  巴哈姆特報導的 Android 版非本人製作
+					バハムートレポート for Androidは、私が作ったものではありません。
                 </a>
                 <br>
-                抵制盜版遊戲從你我做起
+                あなたと私の海賊版ゲームに抵抗する
               </p>
             </p>
             <br>
